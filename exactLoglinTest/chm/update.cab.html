@@ -1,0 +1,122 @@
+<html><head><title>Update method for objects of class cab</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>update.cab(mcexact)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   update.cab">
+<param name="keyword" value="R:   cab">
+<param name="keyword" value=" Update method for objects of class cab">
+</object>
+
+
+<h2>Update method for objects of class cab</h2>
+
+
+<h3>Description</h3>
+
+<p>
+An update method for objects created by <code>mcexact</code> when
+<code>method = 'cab'</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+update(object, ...)
+cab(args,
+    nosim = NULL,
+    batchsize = NULL,
+    savechain = FALSE,
+    p = NULL,
+    flush = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+Output from <code>mcexact</code></td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Alternative arguments for the update</td></tr>
+<tr valign="top"><td><code>args</code></td>
+<td>
+Output from <code>mcexact</code></td></tr>
+<tr valign="top"><td><code>nosim</code></td>
+<td>
+The number of simulations to be performed in the update</td></tr>
+<tr valign="top"><td><code>batchsize</code></td>
+<td>
+A new batchsize</td></tr>
+<tr valign="top"><td><code>savechain</code></td>
+<td>
+Saves the chain of goodness-of-fit statistics</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+An updated proportion of simulated tables left fixed.</td></tr>
+<tr valign="top"><td><code>flush</code></td>
+<td>
+Should the previous information be discarded?
+<code>flush</code> should be set to <code>true</code> if the batchsize is changed.</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The method <code>update.cab</code> calls the function <code>cab</code>, which is the
+engine for <code>mcexact</code> when <code>method = 'cab'</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list of the form outputted from <code>mcexact</code></p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Brian S. Caffo
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="mcexact.html">mcexact</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(residence.dat)
+mcx &lt;- mcexact(y ~ res.1985 + res.1980 + factor(sym.pair),
+               data = residence.dat,
+               method = "cab",
+               p = .5,
+               batchsize = 100) 
+summary(mcx)
+mcx &lt;- update(mcx, nosim = 10 ^ 4)
+summary(mcx)
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

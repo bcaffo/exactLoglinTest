@@ -1,0 +1,181 @@
+<html><head><title>Computes Monte Carlo exact P-values for general log-linear models.</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>mcexact(mcexact)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   mcexact">
+<param name="keyword" value="R:   mcexact.fit">
+<param name="keyword" value=" Computes Monte Carlo exact P-values for general log-linear models.">
+</object>
+
+
+<h2>Computes Monte Carlo exact P-values for general log-linear models.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function computes Monte Carlo estimates of conditional P-values
+for goodness of fit tests for general log-linear models.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+mcexact(formula,
+        data,
+        stat = gof,
+        dens = hyper,
+        nosim = 10 ^ 3,
+        method = "bab",
+        savechain = FALSE,
+        tdf = 3,
+        maxiter = nosim,
+        p = NULL,
+        batchsize = NULL)
+
+mcexact.fit(y,
+            x,
+            mu.hat,
+            stat,
+            dens,
+            nosim,
+            method,
+            savechain,
+            tdf,
+            maxiter,
+            p,
+            batchsize)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>formula</code></td>
+<td>
+Null model formula specified as in <code>glm</code></td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+Optional data frame</td></tr>
+<tr valign="top"><td><code>stat</code></td>
+<td>
+The test statistic, a function of the form <code>function(y, mu.hat)</code>
+where <code>y</code> is the observed and <code>mu.hat</code> are the fitted
+values. Current default <code>gof</code> is a bivariate function of the
+deviance and the Pearson chi-squared.</td></tr>
+<tr valign="top"><td><code>dens</code></td>
+<td>
+The target density on the log scale up to a constant of
+proportionallity. A function of the form
+<code>function(y)</code>. Current default is (proportional to) the log of
+the generalized hypergeometric density.</td></tr>
+<tr valign="top"><td><code>nosim</code></td>
+<td>
+Desired number of simulations.</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+Possibly two values, the importance sampling method of
+Booth and Butler, <code>method = "bab"</code> or the MCMC approach of
+Caffo and Booth <code>method = "cab"</code>.</td></tr>
+<tr valign="top"><td><code>savechain</code></td>
+<td>
+If <code>TRUE</code> saves the values of the chain.</td></tr>
+<tr valign="top"><td><code>tdf</code></td>
+<td>
+A tuning parameter</td></tr>
+<tr valign="top"><td><code>maxiter</code></td>
+<td>
+For <code>method = "bab"</code> number of iterations is
+different from the number of simulations. <code>maxiter</code> is a
+bound on the total number of iterations.</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+A tuning parameter for <code>method = "cab"</code>.</td></tr>
+<tr valign="top"><td><code>batchsize</code></td>
+<td>
+Required batchsizes for <code>method = "cab"</code>.</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+The vector of counts</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+The model matrix</td></tr>
+<tr valign="top"><td><code>mu.hat</code></td>
+<td>
+The fitted values</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+Returns a list of class either <code>"bab"</code> or <code>"cab"</code> depending
+on <code>method</code>. The list contains all of the inputs plus all
+required information to resume the simulation. Generic functions
+<code>print</code> and <code>summary</code> format the output while <code>update</code>
+can be used to resume simulations. <code>mcexact</code> is the front end for
+<code>mcexact.fit</code>.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Brian Caffo
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Booth and Butler (1999), "An importance sampling algorithm for exact conditional tests in log-linear models", Biometrika 86: 321-332. 
+</p>
+<p>
+Caffo and Booth (2001). "A Markov Chain Monte Carlo Algorithm for Approximating Exact Conditional Probabilities", The Journal of Computational and Graphical Statistics 10: 730-45.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+<code>fisher.test</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+#library(mcexact)
+set.seed(1)
+
+#importance sampling
+data(residence.dat)
+mcx &lt;- mcexact(y ~ res.1985 + res.1980 + factor(sym.pair), data = residence.dat) 
+summary(mcx)
+
+#mcmc
+data(pathologist.dat)
+mcx &lt;- mcexact(y ~ factor(A) + factor(B) + I(A * B),
+               data = pathologist.dat,
+               method = "cab",
+               p = .5,
+               nosim = 10 ^ 4,
+               batchsize = 100)
+summary(mcx)
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

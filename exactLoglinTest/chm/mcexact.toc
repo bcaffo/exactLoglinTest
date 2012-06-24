@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package mcexact:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package mcexact:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="alligator.dat">
+<param name="Local" value="alligator.dat.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bab">
+<param name="Local" value="update.bab.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cab">
+<param name="Local" value="update.cab.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="errorcheck">
+<param name="Local" value="mcexact.utils.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="gof">
+<param name="Local" value="gof.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="hyper">
+<param name="Local" value="hyper.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mcexact">
+<param name="Local" value="mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="mcexact.fit">
+<param name="Local" value="mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="pathologist.dat">
+<param name="Local" value="pathologist.dat.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print.bab">
+<param name="Local" value="print.mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print.cab">
+<param name="Local" value="print.mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="residence.dat">
+<param name="Local" value="residence.dat.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rounded.tprob">
+<param name="Local" value="mcexact.utils.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="summary.bab">
+<param name="Local" value="print.mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="summary.cab">
+<param name="Local" value="print.mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="update.bab">
+<param name="Local" value="update.bab.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="update.cab">
+<param name="Local" value="update.cab.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package mcexact:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Computes Monte Carlo exact P-values for general log-linear models. ">
+<param name="Local" value="mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Cross-classification of 118 tumor grades by two pathologists">
+<param name="Local" value="pathologist.dat.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Data frame of alligator food choice by lake, gender and size.">
+<param name="Local" value="alligator.dat.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generalized hypergeometric distribution on the log scale">
+<param name="Local" value="hyper.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Goodness-of-fit function for Poisson log-linear models">
+<param name="Local" value="gof.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal functions for mcexact">
+<param name="Local" value="mcexact.utils.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Print utilities for mcexact">
+<param name="Local" value="print.mcexact.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Residence in 1980 by residence in 1985.">
+<param name="Local" value="residence.dat.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Update method for objects of class bab">
+<param name="Local" value="update.bab.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Update method for objects of class cab">
+<param name="Local" value="update.cab.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

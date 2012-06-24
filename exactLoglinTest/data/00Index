@@ -1,0 +1,7 @@
+alligator.dat           Data frame of alligator food choice by lake,
+                        gender and size.
+czech.dat               Czech auto workers data
+pathologist.dat         Cross-classification of 118 tumor grades by
+                        two pathologists
+residence.dat           Residence in 1980 by residence in 1985.
+titanic.dat             Titanic Survival Data

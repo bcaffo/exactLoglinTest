@@ -1,0 +1,97 @@
+<html><head><title>Goodness-of-fit function for Poisson log-linear models</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>gof(mcexact)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   gof">
+<param name="keyword" value=" Goodness-of-fit function for Poisson log-linear models">
+</object>
+
+
+<h2>Goodness-of-fit function for Poisson log-linear models</h2>
+
+
+<h3>Description</h3>
+
+<p>
+A goodness-of-fit function for Poisson log-linear models as required
+by <code>mcexact</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+gof(y = NULL, mu = NULL, rowlabels = F)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+counts</td></tr>
+<tr valign="top"><td><code>mu</code></td>
+<td>
+mean</td></tr>
+<tr valign="top"><td><code>rowlabels</code></td>
+<td>
+labels of returned goodness-of-fit statistics</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+This function is a useful shell for writing alternative goodness-of-fit
+statistics for <code>mcexact</code>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+If <code>rowlabels = TRUE</code>, then <code>gof</code> returns only the labels of the
+goodness of fit statistics. Otherwise it returns the actual values as
+a vector.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Brian S. Caffo
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="mcexact.html">mcexact</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+#data(residence)
+#get fitted values
+#mu &lt;- glm(residence$y ~ residence$x, family = poisson)$fit
+#gof(residence$y, mu)
+#gof(rowlabels = TRUE)
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

@@ -1,0 +1,129 @@
+<html><head><title>Internal functions for mcexact</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>mcexact.internals(mcexact)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   errorcheck">
+<param name="keyword" value="R:   rounded.tprob">
+<param name="keyword" value=" Internal functions for mcexact">
+</object>
+
+
+<h2>Internal functions for mcexact</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Internal functions used for mcexact.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+rounded.tprob(y, m, s, df)
+errorcheck(y,
+           x,
+           stat,
+           dens,
+           nosim,
+           method,
+           savechain,
+           tdf,
+           maxiter,
+           p,
+           batchsize)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+counts</td></tr>
+<tr valign="top"><td><code>m</code></td>
+<td>
+means</td></tr>
+<tr valign="top"><td><code>s</code></td>
+<td>
+variances</td></tr>
+<tr valign="top"><td><code>df</code></td>
+<td>
+degrees of freedom</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+model matrix</td></tr>
+<tr valign="top"><td><code>stat</code></td>
+<td>
+function to be checked</td></tr>
+<tr valign="top"><td><code>dens</code></td>
+<td>
+function to be checked</td></tr>
+<tr valign="top"><td><code>nosim</code></td>
+<td>
+number of simulations to be checked</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+method to be checked</td></tr>
+<tr valign="top"><td><code>savechain</code></td>
+<td>
+savechain flag to be checked</td></tr>
+<tr valign="top"><td><code>tdf</code></td>
+<td>
+t degrees of freedom to be checked</td></tr>
+<tr valign="top"><td><code>maxiter</code></td>
+<td>
+maximum number of iterations to be checked</td></tr>
+<tr valign="top"><td><code>p</code></td>
+<td>
+prop of table entries left fixed to be checked</td></tr>
+<tr valign="top"><td><code>batchsize</code></td>
+<td>
+batchsize to be checked</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+<code>rounded.tprob</code> returns rounded student's t probabilities for
+integers <code>y</code> with means <code>m</code> and variances
+<code>s</code>. <code>errorcheck</code> is a function containing most of the error
+checking that <code>mcexact</code> performs.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Brian S. Caffo
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="mcexact.html">mcexact</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

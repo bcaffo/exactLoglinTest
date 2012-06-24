@@ -1,0 +1,94 @@
+<html><head><title>Print utilities for mcexact</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>print.mcexact(mcexact)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   print.bab">
+<param name="keyword" value="R:   print.cab">
+<param name="keyword" value="R:   summary.bab">
+<param name="keyword" value="R:   summary.cab">
+<param name="keyword" value=" Print utilities for mcexact">
+</object>
+
+
+<h2>Print utilities for mcexact</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Generic print methods for objects of class <code>cab</code> and <code>bab</code>
+outputted from <code>mcexact</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+print(x,...)
+summary(object,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+An object of class <code>bab</code> or <code>cab</code></td></tr>
+<tr valign="top"><td><code>object</code></td>
+<td>
+An object of class <code>bab</code> or <code>cab</code></td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+Unused, retained for generic method consistency</td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+<code>print.bab</code> and <code>print.cab</code> prints the P-value estimates
+obtained from <code>mcexact</code>. <code>summary.bab</code> and
+<code>summary.cab</code> prints extra information and returns a matrix
+of the P-value estimates.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Brian S. Caffo
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a href="mcexact.html">mcexact</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+#data(residence)
+#resid.mcx &lt;- mcexact(residence$y ~ residence$x, nosim = 10 ^ 2, maxiter = 10 ^ 4)
+#resid.mcx #calls print.bab
+#print(resid.mcx) #calls print.bab
+#summary(resid.mcx) #calls summary.bab
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>
