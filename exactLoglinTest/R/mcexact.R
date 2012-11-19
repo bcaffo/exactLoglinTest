@@ -23,6 +23,7 @@ mcexact <- function(formula,
   update(args, savechain = savechain)
 }
 
-.First.lib <- function(lib, pkg){
-  library.dynam("exactLoglinTest", pkg, lib)
-}
+##This is no longer necessary
+#.First.lib <- function(lib, pkg){
+#  library.dynam("exactLoglinTest", pkg, lib)
+#}

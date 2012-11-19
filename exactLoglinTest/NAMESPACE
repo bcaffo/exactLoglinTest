@@ -1,0 +1,20 @@
+export("build.mcx.obj",
+       "gof",
+       "errorcheck",
+       "rounded.tprob",
+       "simtable.cab",
+       "simtable.bab",
+       "simulateConditional",
+       "mcexact",
+       "hyper")
+
+
+S3method("print", "bab")
+S3method("print", "cab")
+S3method("update", "bab")
+S3method("update", "cab")
+S3method("summary", "bab")
+S3method("summary", "cab")
+
+useDynLib("exactLoglinTest")
+
