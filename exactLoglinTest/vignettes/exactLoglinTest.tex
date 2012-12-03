@@ -1,0 +1,215 @@
+\documentclass[a4paper]{article}
+\usepackage{natbib,amsmath,geometry,float}
+\geometry{margin=1in}
+
+%\VignetteIndexEntry{exactLoglinTest detailed manual}
+
+\title{\texttt{exactLoglinTest}: A Program for Monte Carlo Conditional
+Analysis of Log-linear Models} 
+\author{Brian S. Caffo}
+
+%\newcommand{\eqref}[1]{(\ref{#1})}
+\newcommand{\mcexact}{\texttt{mcexact} }
+\restylefloat{table}
+
+
+\usepackage{/usr/local/R/2.0.1/lib/R/share/texmf/Sweave}
+\begin{document} 
+\maketitle 
+
+Nuisance parameters are parameters that are not of direct interest to
+the inferential question in hand. In a frequentist or likelihood
+paradigm, a common tool for eliminating nuisance parameters is to
+condition on their sufficient statistics. The same technique is useful
+(though rarely used) in a Bayesian settings, as it eliminates the need
+to put priors on nuisance parameters.
+
+For log-linear models, conditional analysis suffers from two main drawbacks.
+\begin{enumerate}
+\item The set of lattice points contained in the conditional distribution is difficult to manage, 
+      computationally or analytically.
+\item The sufficient statistics for the nuisance parameters are not ancillary to the 
+      parameters of interest.
+\end{enumerate}
+In this manuscript we address only the first drawback using \texttt{exactLoglinTest}.
+
+\section{The Problem} 
+
+The observed data, $y = (y_1, \ldots, y_n)$, are modeled as Poisson
+counts with a means, $\mu = (\mu_1,\ldots,\mu_n)$, satisfying $$ \log
+\mu = x \beta $$ under the null hypothesis. Here $x$ is a full rank
+$n\times p$ design matrix. It is easily shown that the sufficient
+statistics for $\beta$ under the null hypothesis are $x^t y$, where a
+superscript $t$ denotes a transpose. Let $h$ be a test statistic of
+interest where larger values of $h$ support the alternative
+hypothesis. Two examples are the Pearson Chi-Squared statistic and the
+deviance. An exact test relative to $h$ can be performed via the
+conditional P-value
+$$
+\mbox{Prob}\{h(y) \geq h(y_{obs}) | x^t y = x^t y_{obs}\} = \sum_{\{y
+\in \Gamma\}} \frac{I\{h(y) \geq h(y_{obs})\}}{C \prod y_i!}  
+$$ 
+where $y_{obs}$ is the observed table, $C$ is a normalizing
+constant and $\Gamma = \{y | x^t y = x^t y_{obs}\}$  (often referred
+to as the reference set).
+
+The term ``exact'' is used to refer to tests that guarantee the
+nominal type I error rate unconditionally. Thus a test that never
+rejects the null hypothesis is technically exact in any
+situation. Therefore, exactness is not in itself a sufficient
+condition for a test to be acceptable.  Moreover, this example (never
+rejecting) is particularly relevant in our setting because $\Gamma$
+may contain one or few elements. Hence the conditional P-value will be
+exactly or near one regardless of the evidence in the data vis-a-vis
+the two hypotheses.  However, it is also the case that the
+conservative conditional tests can produce P-values that are smaller
+than those calculated via Chi-squared approximations (see Subsection
+\ref{path} for an example).
+
+\subsection{Binomial Calculations}
+\label{sec:binom}
+Conditional inference for Poisson log-linear models contains
+conditional inference for binomial-logit models as a special
+case. Consider a binomial logit models of the form, $b_i \sim
+\mbox{Bin}(n_i,p_i)$ for $i=1,\ldots,k$ and
+\begin{equation}
+\label{logitmodel}
+ \mbox{logit}(p_{i}) = z_i \gamma + x_i' \beta,
+\end{equation}
+where $\gamma$ is a scalar and $\beta$ is a $p$ dimensional vector.
+Frequently, $x_i'$ contains only a strata indicator and an intercept
+term. In this case conditioning on the sufficient statistic for
+$\beta$ results in standard conditional logistic regression. For this
+purpose, we suggest the \texttt{coxph} function as described in
+\cite{vr:2002}. Instead we consider the more general case where
+$\beta$ is arbitrary vector of nuisance parameters.  However, the
+reader should again be warned that the loss of information from
+conditioning can sometimes be quite severe in these problems and hence
+produce useless results.
+
+
+Consider testing $H_0 \gamma = 0$ versus some alternative.
+The following model model is equivalent to the null modell for
+\eqref{logitmodel}:
+\begin{equation}
+\label{eq:poisson}
+y_{ij} \sim \mbox{Poisson}(\mu_{ij}) 
+\hspace{.3in} 
+\mbox{log}(\mu_{i1}) = \alpha_i + x_i' \beta
+\hspace{.3in} 
+\mbox{log}(\mu_{i2}) = \alpha_i,
+\end{equation}
+for $j=1,2$ and $i=1,\ldots,k$.  The sufficient statistics for the
+$\alpha_i$ are $y_{i1} + y_{i2} = y_{i+}$. Then it is easy to show
+that the conditional distribution of $y_{i1} | y_{i+}$ is precisely
+the model given by \eqref{logitmodel} where
+\begin{eqnarray*}
+  p_i & = &\mu_{i1} / \mu_{i+} \\
+  b_i & = & y_{i1} \\
+  n_i & = & y_{i+}.
+\end{eqnarray*}
+Therefore, conditioning out the nuisance parameters $\{\alpha_i\}$ and
+$\beta$ for the Poisson log-linear model yields exactly the same
+(null) conditional distribution as conditioning out $\beta$ in model
+\eqref{logitmodel}.  Furthermore, this exercise indicates exactly how
+to perform the calculations, which is useful since \texttt{exactLoglinTest} only
+accepts models in the form of Poisson log-linear models.
+
+Currently \texttt{exactLoglinTest} is useful for tests of $\gamma = 0$. With
+modifications, the central ideas could be used to calculate a Monte
+Carlo estimate of the conditional likelihood for $\gamma$. (It is
+possible to use \mcexact as is for this purpose. However, we have had
+mixed success in this endeavor and it is best avoided due to numerical
+instability.)
+
+\section{\texttt{exactLoglinTest}} 
+The software \texttt{exactLoglinTest} is an implementation of the algorithms presented
+in \cite{booth:butler:1999} and \cite{caffo:booth:2000}.  At the heart
+of both algorithms is a sequentially generated rounded normal
+approximation to the conditional distribution. We refer the reader
+to those papers for a more complete description.
+
+You can obtain a copy of \texttt{exactLoglinTest} at as well as a no-web \cite{leisch}
+version of this document at
+\begin{verbatim}
+http://www.biostat.jhsph.edu/~bcaffo/downloads.htm
+\end{verbatim}
+You can install \texttt{exactLoglinTest} with \texttt{R CMD INSTALL}, on Unix and
+Linux, while the binaries are available for Windows. Assuming it is
+installed, one can load \mcexact with
+\begin{Schunk}
+\begin{Sinput}
+> library(exactLoglinTest)
+> set.seed(1)
+\end{Sinput}
+\end{Schunk}
+Here, the optional argument \texttt{lib.loc} is necessary if
+the package has been installed into one of the paths that R automatically
+checks. We also set the random number seed to a specific value which is
+a good practice for Monte Carlo procedures.
+
+\section{Examples}
+\subsection{Residency Data}
+Assuming \texttt{exactLoglinTest} has been properly installed, the residency data can
+be obtained by the command
+\begin{Schunk}
+\begin{Sinput}
+> data(residence.dat)
+\end{Sinput}
+\end{Schunk}
+This data is a 4$\times$4 table of persons' residence in 1985 by
+their residence in 1980. See Table \ref{tab:res} for the complete
+data.  The data frame, \texttt{residence.dat}, contains the counts
+stacked by the rows. The extra term \texttt{sym.pair} is used to fit
+a quasi-symmetry model.  For details on the quasi-symmetry model see
+\cite{agre:1990}.  To obtain a Monte Carlo goodness of fit test of
+quasi-symmetry versus a saturated model involves the following command
+\begin{Schunk}
+\begin{Sinput}
+> resid.mcx <- mcexact(y ~ res.1985 + res.1980 + factor(sym.pair), 
++     data = residence.dat, nosim = 10^2, maxiter = 10^4)
+> resid.mcx
+\end{Sinput}
+\begin{Soutput}
+                deviance    Pearson
+observed.stat 2.98596233 2.98198696
+pvalue        0.46311695 0.46311695
+mcse          0.03679595 0.03679595
+\end{Soutput}
+\end{Schunk}
+
+The default method is the importance sampling of
+\cite{booth:butler:1999}. Using this method, the number of desired
+simulations \texttt{nosim} may not be met in \texttt{maxiter}
+iterations and no warning is issued if this occurs. The returned value
+is a list storing the results of the Monte Carlo simulation and all of
+the relevant information necessary to restart the simulation.  More
+information can be obtained with \texttt{summary}
+\begin{Schunk}
+\begin{Sinput}
+> summary(resid.mcx)
+\end{Sinput}
+\begin{Soutput}
+Number of iterations       =  100 
+T degrees of freedom       =  3 
+Number of counts           =  16 
+df                         =  3 
+Next update has nosim      =  100 
+Next update has maxiter    =  10000 
+Proportion of valid tables =  1 
+
+                deviance    Pearson
+observed.stat 2.98596233 2.98198696
+pvalue        0.46311695 0.46311695
+mcse          0.03679595 0.03679595
+\end{Soutput}
+\end{Schunk}
+The $t$ degrees of freedom refers to degrees of freedom used as a
+tuning parameter within the algorithm while the \texttt{df} refers to
+the model degrees of freedom. In this case, the Monte Carlo standard
+error, \texttt{mcse}, seems too large. As mentioned previously,
+\mcexact, stores the relevant information for restarting the
+simulation
+\begin{Schunk}
+\begin{Sinput}
+> resid.mcx <- update(resid.mcx, nosim = 10^4, maxiter = 10^6)
