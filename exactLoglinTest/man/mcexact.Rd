@@ -54,8 +54,6 @@ build.mcx.obj(formula,
   \item{p}{A tuning parameter for \code{method = "cab"}.}
   \item{batchsize}{Required batchsizes for \code{method = "cab"}.}
 }
-\details{
-}
 \value{
   Returns a list of class either \code{"bab"} or \code{"cab"} depending
   on \code{method}. The list contains all of the inputs plus all
@@ -73,8 +71,6 @@ build.mcx.obj(formula,
   http://www.biostat.jhsph.edu/~bcaffo/downloads.htm
 }
 \author{Brian Caffo }
-\note{}
-
  
 \seealso{\code{\link{fisher.test}}}
 

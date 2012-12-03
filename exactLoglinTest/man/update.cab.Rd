@@ -33,9 +33,7 @@ cab(args,
 \value{
   A list of the form outputted from \code{mcexact}
 }
-\references{}
 \author{Brian S. Caffo}
-\note{}
 \seealso{\code{\link{mcexact}}}
 
 \examples{

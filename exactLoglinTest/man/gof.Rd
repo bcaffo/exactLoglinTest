@@ -22,9 +22,7 @@ gof(y = NULL, mu = NULL, rowlabels = FALSE)
   goodness of fit statistics. Otherwise it returns the actual values as
   a vector. 
 }
-\references{}
 \author{Brian S. Caffo}
-\note{}
 \seealso{\code{\link{mcexact}}}
 
 \examples{

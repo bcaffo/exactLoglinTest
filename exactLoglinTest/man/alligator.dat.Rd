@@ -12,6 +12,4 @@
 \references{Agresti (1990). \emph{Categorical Data
   Analysis}. Wiley-Interscience. Page 308.
 }
-\seealso{
-}
 \keyword{datasets}

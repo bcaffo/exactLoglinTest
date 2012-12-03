@@ -41,12 +41,6 @@ errorcheck(y,
   \code{s}. \code{errorcheck} is a function containing most of the error
   checking that \code{mcexact} performs.
 }
-\details{
-}
-\references{
-}
 \seealso{\code{\link{mcexact}}}
-\examples{
-}
 \author{Brian S. Caffo}
 \keyword{htest}

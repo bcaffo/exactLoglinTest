@@ -11,16 +11,9 @@ hyper(y)
 \arguments{
   \item{y}{Counts}
 }
-\details{
-}
 \value{
   A real-valued scalar.
 }
-\references{}
 \author{Brian S. Caffo}
-\note{}
 \seealso{\code{\link{mcexact}}}
-
-\examples{
-}
 \keyword{htest}

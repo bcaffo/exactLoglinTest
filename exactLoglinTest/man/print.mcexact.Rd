@@ -25,10 +25,6 @@
   \code{summary.cab} prints extra information and returns a matrix
   of the P-value estimates.
 }
-\details{
-}
-\references{
-}
 \seealso{\code{\link{mcexact}}}
 \examples{
 #data(residence)
