@@ -1,7 +1,7 @@
 simtable.cab <- function(args, nosim = NULL, p = NULL, y.start = NULL){
   ##error checking and initializing
   if (!is.null(p)){
-    if (!is.real(p)) stop("p must be real valued")
+    if (!is.double(p)) stop("p must be double")
     else if ((p < 0) | (p > 1)) stop("p must be in [0,1]")
   }
   if (!is.null(nosim)) args$nosim <- nosim
@@ -33,8 +33,8 @@ simtable.cab <- function(args, nosim = NULL, p = NULL, y.start = NULL){
     temp <- .Call("multinorm",
                   conde1.permute,
                   condv1.permute,
-                  as.real(staysfixed),
-                  as.real(y1.old.permute),
+                  as.double(staysfixed),
+                  as.double(y1.old.permute),
                   args$tdf,
                   as.integer(k),
                   PACKAGE="exactLoglinTest")

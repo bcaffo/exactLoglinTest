@@ -1,7 +1,7 @@
 #x is the design matrix
 errorcheck <- function(y, x, stat, dens, nosim, method, savechain, tdf, maxiter, p, batchsize){
-  if ((!is.real(y)) & (!is.integer(y)))
-    stop("y must be real or integer valued")
+  if ((!is.double(y)) & (!is.integer(y)))
+    stop("y must be double or integer valued")
   else {
     if (any(y < 0))
       stop("y must be positive")
@@ -11,8 +11,8 @@ errorcheck <- function(y, x, stat, dens, nosim, method, savechain, tdf, maxiter,
 
   if (!is.matrix(x))
     stop("x must a matrix")
-  else if ((!is.real(x)) & (!is.integer(x)))
-    stop("x must be real or integer valued")
+  else if ((!is.double(x)) & (!is.integer(x)))
+    stop("x must be double or integer valued")
   else if (qr(x)$rank > dim(x)[2])
     stop("Rank(x) <= number of rows")
   else if (dim(x)[2] < 2)
@@ -26,27 +26,27 @@ errorcheck <- function(y, x, stat, dens, nosim, method, savechain, tdf, maxiter,
   
   if (!is.function(dens)) stop("dens must be a function")
 
-  if ((!is.real(nosim)) & (!is.integer(nosim))) stop("nosim must be real or integer valued")
+  if ((!is.double(nosim)) & (!is.integer(nosim))) stop("nosim must be double or integer valued")
   else if (nosim <= 0) stop("nosim < 0 not allowed")
 
   if (method != "bab" & method != "cab") stop("method must be either cab or bab")
 
-  if ((!is.real(tdf)) & (!is.integer(tdf))) stop("tdf must be real or integer valued")
+  if ((!is.double(tdf)) & (!is.integer(tdf))) stop("tdf must be double or integer valued")
   else if (tdf <= 0) stop("tdf < 0 not allowed")
 
-  if (!is.null(maxiter) & !is.real(maxiter) & !is.integer(maxiter))
-    stop("maxiter must be null, real or integer valued")
+  if (!is.null(maxiter) & !is.double(maxiter) & !is.integer(maxiter))
+    stop("maxiter must be null, double or integer valued")
   else if (method == "bab" & is.null(maxiter)) stop("maxiter must be specified if method = bab")
   else if (maxiter < nosim) stop("maxiter >= nosim")
    
-  if (!is.null(p) & !is.real(p) & !is.integer(p))
-    stop("p must be null, real or integer valued")
+  if (!is.null(p) & !is.double(p) & !is.integer(p))
+    stop("p must be null, double or integer valued")
   else if (method == "cab" & is.null(p)) stop("p must be specified if method = cab")
   else if (!is.null(p))
     if (p < 0 | p > 1) stop("p must be between 0 and 1")
 
-  if (!is.null(batchsize) & !is.real(batchsize) & !is.integer(batchsize))
-    stop("batchsize must be null, real or integer valued")
+  if (!is.null(batchsize) & !is.double(batchsize) & !is.integer(batchsize))
+    stop("batchsize must be null, double or integer valued")
   else if (method == "cab"){ 
     if (is.null(batchsize))
       stop("batchsize must be specified if method = bab") 

@@ -1,5 +1,5 @@
 Package: exactLoglinTest
-Version: 1.4.1
+Version: 1.4.2
 Title: Monte Carlo Exact Tests for Log-linear models 
 Author: Brian Caffo <bcaffo@gmail.com>
 Maintainer: Brian Caffo <bcaffo@gmail.com>
